@@ -1,7 +1,7 @@
 #!groovy
 
 pipeline {
-options { disableConcurrentBuilds() }
+
   agent any
 
   environment {
@@ -10,20 +10,14 @@ options { disableConcurrentBuilds() }
     git_commit_author = ''
     git_commit_author_name = ''
     git_commit_author_email = ''
- }
+  }
 
   stages {
-     stage("read vault key") {
-            steps {
-withCredentials([string(credentialsId: 'sec', variable: 'sec')]) {
-    // some block
-  echo "My secret is $sec"
-}
-        }
 
     // Build
     stage('Build') {
-
+      agent {
+        label 'master'
       }
       steps {
         deleteDir()
@@ -68,5 +62,13 @@ withCredentials([string(credentialsId: 'sec', variable: 'sec')]) {
     }
 
   }
- 
-}
+  post {
+    success {
+      sh "echo 'Send mail on success'"
+      // mail to:"me@example.com", subject:"SUCCESS: ${currentBuild.fullDisplayName}", body: "Yay, we passed."
+    }
+    failure {
+      sh "echo 'Send mail on failure'"
+      // mail to:"me@example.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Boo, we failed."
+    }
+  
