@@ -10,8 +10,7 @@ options { disableConcurrentBuilds() }
     git_commit_author = ''
     git_commit_author_name = ''
     git_commit_author_email = ''
-    SECRET = vault path: 'secrets', key: 'jenkins', vaultUrl: 'http://localhost:8200/', credentialsId: 'jenkins', engineVersion: "2"
-  }
+ }
 
   stages {
      stage("read vault key") {
