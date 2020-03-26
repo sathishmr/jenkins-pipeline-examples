@@ -1,7 +1,7 @@
 #!groovy
 
 pipeline {
-
+options { disableConcurrentBuilds() }
   agent any
 
   environment {
@@ -71,4 +71,5 @@ pipeline {
       sh "echo 'Send mail on failure'"
       // mail to:"me@example.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Boo, we failed."
     }
-  
+  }
+}
