@@ -15,21 +15,15 @@ options { disableConcurrentBuilds() }
   stages {
      stage("read vault key") {
             steps {
-              withCredentials([usernamePassword(credentialsId: 'mylogin', passwordVariable: 'pass', usernameVariable: 'user')]) {
+withCredentials([string(credentialsId: 'sec', variable: 'sec')]) {
     // some block
+  echo "My secret is $sec"
 }
-                echo "${user}"
-                 echo "${pass}"
-            }
         }
 
     // Build
     stage('Build') {
-      agent {
-        label 'master'
-        withVault(configuration: [timeout: 60, vaultCredentialId: 'admin', vaultNamespace: 'kv', vaultUrl: 'http://localhost:8200'], vaultSecrets: [[path: 'kv/', secretValues: [[vaultKey: 'username']]]]) {
-    // some block
-}
+
       }
       steps {
         deleteDir()
