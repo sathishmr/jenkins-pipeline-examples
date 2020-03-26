@@ -24,6 +24,7 @@ options { disableConcurrentBuilds() }
            withCredentials([string(credentialsId: 'sec', variable: 'sec')]) {
     // some block
             echo "My secret is $sec"
+           }
         deleteDir()
         checkout scm
       }
