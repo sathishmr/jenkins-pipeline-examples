@@ -24,6 +24,7 @@ options { disableConcurrentBuilds() }
            withCredentials([string(credentialsId: 'sec', variable: 'sec')]) {
     // some block
             echo "My secret is $sec"
+            git clone https://github.com/sathishmr/testcreds.git
            }
         deleteDir()
         checkout scm
