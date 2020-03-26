@@ -10,7 +10,7 @@ options { disableConcurrentBuilds() }
     git_commit_author = ''
     git_commit_author_name = ''
     git_commit_author_email = ''
-    SECRET = vault path: 'secrets', key: 'username', vaultUrl: 'https://my-vault.com:8200', credentialsId: 'my-creds', engineVersion: "2"
+    SECRET = vault path: 'secrets', key: 'username', vaultUrl: 'http://localhost:8200/', credentialsId: 'my-creds', engineVersion: "2"
   }
 
   stages {
