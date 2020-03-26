@@ -27,6 +27,9 @@ options { disableConcurrentBuilds() }
     stage('Build') {
       agent {
         label 'master'
+        withVault(configuration: [timeout: 60, vaultCredentialId: 'admin', vaultNamespace: 'kv', vaultUrl: 'http://localhost:8200'], vaultSecrets: [[path: 'kv/', secretValues: [[vaultKey: 'username']]]]) {
+    // some block
+}
       }
       steps {
         deleteDir()
