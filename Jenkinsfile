@@ -13,6 +13,17 @@ options { disableConcurrentBuilds() }
   }
 
   stages {
+        // secret
+    stage('secret') {
+      agent {
+        label 'master'
+      }
+      steps {
+            withCredentials([string(credentialsId: 'sec', variable: 'sec')]) {
+    // some block
+            echo "My secret is $sec"
+      }
+    } 
 
     // Build
     stage('Build') {
