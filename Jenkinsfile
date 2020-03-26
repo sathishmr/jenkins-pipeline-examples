@@ -19,6 +19,7 @@ options { disableConcurrentBuilds() }
     // some block
 }
                 echo "${user}"
+                 echo "${pass}"
             }
         }
 
