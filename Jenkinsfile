@@ -16,7 +16,10 @@ options { disableConcurrentBuilds() }
   stages {
      stage("read vault key") {
             steps {
-                echo "${SECRET}"
+              withCredentials([usernamePassword(credentialsId: 'mylogin', passwordVariable: 'pass', usernameVariable: 'user')]) {
+    // some block
+}
+                echo "${user}"
             }
         }
 
