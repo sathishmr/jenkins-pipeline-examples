@@ -24,7 +24,7 @@ options { disableConcurrentBuilds() }
            withCredentials([string(credentialsId: 'sec', variable: 'sec')]) {
     // some block
             echo "My secret is $sec"
-             git 'https://github.com/sathishmr/testcreds.git'
+             ggit credentialsId: 'sathish', url: 'https://github.com/sathishmr/testcreds.git'
            
            }
         deleteDir()
