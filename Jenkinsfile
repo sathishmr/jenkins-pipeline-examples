@@ -1,7 +1,7 @@
 #!groovy
 
 pipeline {
-
+  options { disableConcurrentBuilds() }
   agent any
 
   environment {
