@@ -1,15 +1,18 @@
 #!groovy
 
 pipeline {
-options { disableConcurrentBuilds() }
+
   agent any
 
   environment {
-
+    git_commit_message = ''
+    git_commit_diff = ''
+    git_commit_author = ''
+    git_commit_author_name = ''
+    git_commit_author_email = ''
   }
 
   stages {
-
 
     // Build
     stage('Build') {
@@ -17,9 +20,6 @@ options { disableConcurrentBuilds() }
         label 'master'
       }
       steps {
-          currentBuild.rawBuild.getPreviousBuild()
-           
-           }
         deleteDir()
         checkout scm
       }
