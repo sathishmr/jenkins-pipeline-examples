@@ -2,7 +2,6 @@
 
 pipeline {
   options { disableConcurrentBuilds() }
-  currentBuild.rawBuild.getPreviousBuild()
   agent any
 
   environment {
