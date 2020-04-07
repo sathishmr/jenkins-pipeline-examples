@@ -2,6 +2,7 @@
 
 pipeline {
   options { disableConcurrentBuilds() }
+  currentBuild.rawBuild.getPreviousBuild()
   agent any
 
   environment {
@@ -31,7 +32,7 @@ pipeline {
         label 'master'
       }
       steps {
-        currentBuild.rawBuild.getPreviousBuild()
+        
         deleteDir()
         checkout scm
         sh "echo 'Run Static Code Analysis'"
