@@ -3,14 +3,6 @@
 pipeline {
   options { disableConcurrentBuilds() }
   agent any
-matrix {
-  post {
-    changed {
-      // One or more steps need to be included within each condition's block.
-    }
-  }
-
-}
 
   environment {
     git_commit_message = ''
